@@ -6,9 +6,9 @@ name := "jdbc"
 
 organization := "com.simplesys"
 
-version := "1.0.1"
+version := "1.0.2-SNAPSHOT"
 
-scalaVersion := "2.10.6"
+scalaVersion := "2.12.3"
 
 scalacOptions := Seq(
     "-feature",
@@ -23,7 +23,7 @@ description := ""
 
 libraryDependencies ++= {
     //val ssysCoreVersion = "1.2.100"
-    val ssysCoreVersion = "1.3.1"
+    val ssysCoreVersion = "1.3-SNAPSHOT"
     
     Seq("com.simplesys.core" %% "scala-gen" % ssysCoreVersion)
 }

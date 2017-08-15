@@ -20,20 +20,13 @@ object JDBCPlugin extends AutoPlugin {
 
 
   override val projectSettings: Seq[Setting[_]] = inConfig(Compile)(Seq(
-    outputDir <<= (sourceManaged in Compile) {
-      _ / "com" / "simplesys" / "jdbc" / "control" / "TableSuperTuple"
+    outputDir := (sourceManaged in Compile).value / "com" / "simplesys" / "jdbc" / "control" / "TableSuperTuple",
+    outputDir1 := (sourceManaged in Compile).value / "com" / "simplesys" / "jdbc" / "control" / "SuperTuple1",
+    tupleOutputDir := (sourceManaged in Compile).value / "com" / "simplesys" / "tuple",
+    generateSuperTuple := {
+        genSuperTuple(tupleOutputDir.value, outputDir.value, outputDir1.value, maxArity.value)
     },
-    outputDir1 <<= (sourceManaged in Compile) {
-      _ / "com" / "simplesys" / "jdbc" / "control" / "SuperTuple1"
-    },
-    tupleOutputDir <<= (sourceManaged in Compile) {
-      _ / "com" / "simplesys" / "tuple"
-    },
-    generateSuperTuple <<= (tupleOutputDir, outputDir, outputDir1, maxArity) map {
-      (tupleOut, out, out1, arr) =>
-        genSuperTuple(tupleOut, out, out1, arr)
-    },
-    sourceGenerators <+= generateSuperTuple
+    sourceGenerators += {generateSuperTuple}
   ))
 
   def genSuperTuple(tupleOutputDir: File, outputDir: File, outputDir1: File, maxArity: Int): Seq[File] = (
