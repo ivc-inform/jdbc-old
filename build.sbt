@@ -24,9 +24,8 @@ description := ""
 libraryDependencies ++= {
     //val ssysCoreVersion = "1.2.100"
     val ssysCoreVersion = "1.3.1"
-    Seq(
-        "com.simplesys.core" %% "scala-gen" % ssysCoreVersion
-    )
+    
+    Seq("com.simplesys.core" %% "scala-gen" % ssysCoreVersion)
 }
 
 publishArtifact in(Compile, packageBin) := true
@@ -37,7 +36,7 @@ publishArtifact in(Compile, packageDoc) := false
 
 publishArtifact in(Compile, packageSrc) := true
 
-publishMavenStyle := true
+//publishMavenStyle := true
 
-git.baseVersion := "1.3"
+//git.baseVersion := "1.3"
 
