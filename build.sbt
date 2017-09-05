@@ -2,11 +2,9 @@ sbtPlugin := true
 
 name := "jdbc"
 
-//enablePlugins(GitVersioning)
-
 organization := "com.simplesys"
 
-version := "1.0.2-SNAPSHOT"
+version := "1.0.3"
 
 scalaVersion := "2.12.3"
 
@@ -22,9 +20,9 @@ scalacOptions := Seq(
 description := ""
 
 libraryDependencies ++= {
-    //val ssysCoreVersion = "1.2.100"
-    val ssysCoreVersion = "1.4-SNAPSHOT"
-    
+    //val ssysCoreVersion = "1.4-SNAPSHOT"
+    val ssysCoreVersion = "1.4.0.2"
+
     Seq("com.simplesys.core" %% "scala-gen" % ssysCoreVersion)
 }
 
