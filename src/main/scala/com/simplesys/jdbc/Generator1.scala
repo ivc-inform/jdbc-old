@@ -33,14 +33,14 @@ object Generator1 {
           ScalaMethod(name = "buildResult", body = ScalaNoBody, `type` = "ReturnType".tp, parametrs = ScalaClassParametrs(("resultSet", ScalaResultSet).param)),
           ScalaMethod(name = "getColumns", body = ScalaBody("SQLFields(fields.map(_.getColumn))"), `type` = "SQLFields".tp, serrializeToOneString = true), {
             val body = ScalaBody(
-                ScalaVariable(name = "columnName", body = ScalaBody("columnInBo.name.unQuoted.replace(\"-\", \"\")"), serrializeToOneString = true, `type` = ScalaString),
+                ScalaVariable(name = "columnName", body = ScalaBody("{\n      import com.simplesys.common.JVM.Strings._\n      columnInBo.name.unQuoted.replace(\"-\", \"\")\n     }"), serrializeToOneString = true, `type` = ScalaString),
                 ScalaVariable(name = "field", body = ScalaBody("fields.filter(_.nameInBo === columnName).head"), serrializeToOneString = true, `type` = "BasicClassBOColumn[_]".tp),
                 "columnInBo.copy(name = field.name, tableOwner = getTableOwner(field))"
             )
             ScalaMethod(name = "getColumnInBase", body = body, `type` = "SQLField".tp, serrializeToOneString = true, parametrs = ScalaClassParametrs(ScalaClassParametr(name = "columnInBo", `type` = "SQLField".tp)))
         }, {
             val body = ScalaBody(
-                ScalaVariable(name = "columnName", body = ScalaBody("columnNameInBo.unQuoted.replace(\"-\", \"\")"), serrializeToOneString = true, `type` = ScalaString),
+                ScalaVariable(name = "columnName", body = ScalaBody("{\n      import com.simplesys.common.JVM.Strings._\n      columnInBo.name.unQuoted.replace(\"-\", \"\")\n     }"), serrializeToOneString = true, `type` = ScalaString),
                 ScalaVariable(name = "field", body = ScalaBody("fields.filter(_.nameInBo === columnName).head"), serrializeToOneString = true, `type` = "BasicClassBOColumn[_]".tp),
                 "SQLField(name = field.name, originalName = field.name, tableOwner = getTableOwner(field))"
             )

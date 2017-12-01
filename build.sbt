@@ -4,9 +4,9 @@ name := "jdbc"
 
 organization := "com.simplesys"
 
-version := "1.0.3"
+version := "1.0.4-SNAPSHOT"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.4"
 
 scalacOptions := Seq(
     "-feature",
